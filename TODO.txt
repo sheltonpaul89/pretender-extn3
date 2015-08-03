@@ -1,0 +1,63 @@
+01/07/2012 - Easyjet + europython sprint.
+
+[*] Split current http server into management and mock servers.
+    [*] Move mocking logic to mock server, and simplify in boss server
+    [*] Mock http server should talk to management server to retrieve responses
+        for requests, and store history.
+    [*] JSON data - b64 encode body
+    [*] Encapsulate JSON-ified http request preset, request... in a class
+    [*] Convert all communication to JSON instead of tricky HTTP headers
+        [*] preset, mock
+        [*] history
+    [*] change 'rules' to 'rule' (http: 'METHOD URL')
+[*] From management server, spin up mock http server on request.
+    [*] Add view for spinning up an http mock server
+    [*] Add client request on init to spin up mock server
+    [*] Choose a port number that is not currently in use.
+    [*] Destroy old mock servers
+    [*] Give client ability to determine destroy timeout of mock server
+    [*] Refactor out some non-view stuff into separate modules.
+    [*] Move data variables to appropriate view modules.
+[*] Refactor client/sub client class to share single http connection betweeen
+    subclients rather than needing 2/3 per test.
+[*] Convert prints to logs. Improve logging.
+[*] Multi-client / multi-tenancy
+    [*] Management server gives the client a unique id (UID) which should be included in
+        the url given to it for use against the mock server.
+    [*] Refactor storage in the management server to store by UID
+[*] Keep track of started ports so as to save time when starting new mock
+    servers
+[*] Specifiy number of replies for a rule::
+
+        mock.when('POST /someplace').reply("a first mock body",
+                                           status=200,
+                                           times=20)
+    With a default of 1.
+[ ] Refactor server startup
+    [C] Spin up boss tool for test writers.
+[ ] Update sphinx docs
+    [C] Ensure they are up-to-date with latest code
+    [C] Document usage example
+    [C] Add an overview of how the internals (launching of servers) work
+[ ] Add unit tests for helper classes?
+[*] SMTP mock support
+    [*] Refactor http/server.py out into a base mock server class.
+    [*] Create a subclass of the base mock server class for use with SMTP.
+    [*] Alter the way that mock servers are started so that asynccore doesn't
+        block the main process.
+    [*] Add documentation to all appropriate places.
+------Version 1.0------
+[ ] Support persistence
+    [ ] Change dict ``HTTP_MOCK_SERVERS`` in boss/server.py to be obtainable
+        at start up so that pids are not lost when the server is restarted
+        (eg on save)
+    [ ] Persist presets and history
+[ ] Prepare support of non-HTTP protocols
+    [ ] Refactor history storage and retrieval to be less dependent on HTTP
+        calls.
+    [ ] Return JSON that the client knows what to do with.
+------Version 1.1------
+[ ] SOAP mock support
+--------------------------------------------------------------
+Other future tasks:
+[ ] Add static file serving for manual Ajax testing

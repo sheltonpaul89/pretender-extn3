@@ -1,0 +1,14 @@
+*~
+*.swp
+*.pyc
+*.pyo
+*.pid
+*.log
+*.err
+*.out
+.*/
+tags
+dist/
+*.egg-info/
+docs/_build
+pep8.txt
