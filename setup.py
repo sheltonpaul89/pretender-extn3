@@ -6,16 +6,16 @@ from setuptools import setup, find_packages
 from pretend_extended import __version__
 
 setup(
-    name='pretend_extended',
-    version='1.2.6',
+    name='pretend-extended3',
+    version='3.1',
     description='Fake servers for testing',
     long_description=open('README.rst').read(),
     author='Shelton Paul Infant',
     author_email='sheltonpaul89@gmail.com',
-    url='https://github.com/sheltonpaul89/pretender_extn',
+    url='https://github.com/sheltonpaul89/pretender-extn3',
     packages=find_packages(),
     install_requires=['bottle', 'argparse'],
-    download_url='https://github.com/sheltonpaul89/pretender_extn/tarball/1.2.4',
+    download_url='https://github.com/sheltonpaul89/pretender-extn3/tarball/3.1',
     #include_package_data=True,
     #package_data={
     #    '': ['*.txt', '*.rst'],
